@@ -1,0 +1,76 @@
+﻿@model EntityLayer.Concrate.Kullanici
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kayıt Sayacı</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="~/RegisterTemp/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="~/RegisterTemp/css/style.css">
+</head>
+<body>
+
+    <div class="main">
+        <div class="container">
+            <div class="signup-content">
+                <div class="signup-img">
+                    <img src="images/signup-img.jpg" alt="">
+                </div>
+                <div class="signup-form">
+					@using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "appointment-form", id = "appointment-form" }))
+					{
+						<h2> Staj Takip Sistemi Kayıt Formu</h2>
+						<div class="form-group-1">
+							@Html.TextBoxFor(x => x.AdSoyad, new { placeholder = "Ad Soyad",type="text", name="adsoyad" })
+							@Html.ValidationMessageFor(x => x.AdSoyad )
+
+							@Html.TextBoxFor(x => x.TCNO, new { placeholder = "TC Kimlik No",type="text", name="tcno" })
+							@Html.ValidationMessageFor(x => x.TCNO )
+
+							@Html.TextBoxFor(x => x.Mail, new { placeholder = "E-Mail",type="email", name="mail" })
+							@Html.ValidationMessageFor(x => x.Mail )
+
+							@Html.TextBoxFor(x => x.Password, new { placeholder = "Şifre" ,type="password", name="sifre" })
+							@Html.ValidationMessageFor(x => x.Password )
+
+							@Html.RadioButtonFor( x => x.Cinsiyet , true, new { id = "male-radio", @class = "form-check-input" }) <label for="male-radio">Erkek</label>
+							@Html.RadioButtonFor(x => x.Cinsiyet , false, new { id = "female-radio", @class = "form-check-input" }) <label for="female-radio">Kadın</label>
+							@Html.ValidationMessageFor(x => x.Cinsiyet )
+
+							@Html.EditorFor( x => x.Image, new { htmlAttributes = new { @class = "form-control", type = "file" } })
+							@Html.ValidationMessageFor(x => x.Image )
+
+							@Html.DropDownListFor(x => x.Unvan, new SelectList(new List<string> { "Prof. Dr.", "Doç. Dr.","Dr. Öğr. Üyesi","Öğretim Görevlisi","Araştırma Görevlisi" }), "Ünvan Seçiniz", new { @class = "form-control" })
+							@Html.ValidationMessageFor(x => x.Unvan )
+
+							@Html.TextBoxFor(x => x.OgrenciNo, new { placeholder = "Öğrenci No" ,type="text", name="ogrencino" })
+							@Html.ValidationMessageFor(x => x.OgrenciNo )
+
+							@Html.TextBoxFor(x => x.AdminNo, new { placeholder = "Admin No" ,type="text", name="adminno" })
+							@Html.ValidationMessageFor(x => x.AdminNo )
+
+							@Html.TextBoxFor(x => x.PersonelNo, new { placeholder = "Personel No" ,type="text", name="personelno" })
+							@Html.ValidationMessageFor(x => x.PersonelNo )
+
+							<div class="form-submit">
+								<input type="submit" name="submit" class="submit" value="Kayıt Ol" />
+							</div>
+						</div>
+					}
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JS -->
+    <script src="~/RegisterTemp/vendor/jquery/jquery.min.js"></script>
+    <script src="~/RegisterTemp/js/main.js"></script>
+</body>
+</html>

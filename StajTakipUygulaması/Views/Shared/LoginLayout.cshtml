@@ -1,0 +1,166 @@
+﻿@model EntityLayer.Concrate.Kullanici
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+	<title>Giriş Sayfaı</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="~/LoginTemp/images/icons/favicon.ico" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="~/LoginTemp/vendor/bootstrap/css/bootstrap.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="~/LoginTemp/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="~/LoginTemp/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="~/LoginTemp/vendor/animate/animate.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="~/LoginTemp/vendor/css-hamburgers/hamburgers.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="~/LoginTemp/vendor/animsition/css/animsition.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="~/LoginTemp/vendor/select2/select2.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="~/LoginTemp/vendor/daterangepicker/daterangepicker.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="~/LoginTemp/css/util.css">
+	<link rel="stylesheet" type="text/css" href="~/LoginTemp/css/main.css">
+	<!--===============================================================================================-->
+</head>
+<body style="background-color: #666666;">
+
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				@using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "login100-form validate-form" }))
+				{ 
+					<span class="login100-form-title p-b-43">
+						Lütfen Bilgilerinizi Giriniz
+					</span>
+
+
+					<div class="wrap-input100 mb-5 " >
+						@Html.TextBoxFor(x => x.TCNO, new { @class = "input100" ,placeholder = "TC Kimlik No"  })
+						@Html.ValidationMessageFor(x => x.TCNO, null, new { @class = "input100" } )
+						<span class="focus-input100"></span>
+					</div>
+
+
+					<div class="wrap-input100 mb-4" >
+						@Html.TextBoxFor(x => x.Password, new { @class = "input100", placeholder = "Şifre", type = "password",id="password-field" })
+						@Html.ValidationMessageFor(x => x.Password, null, new { @class = "input100" })
+		
+					</div>
+
+					<div class="flex-sb-m w-full p-t-3 p-b-32">
+						<div class="contact100-form-checkbox">
+							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+							<label class="label-checkbox100" for="ckb1">
+								Beni Hatırla
+							</label>
+						</div>
+
+						<div>
+							<a href="#" class="txt1">
+								Şifremi Unuttum?
+							</a>
+						</div>
+					</div>
+
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Giriş Yap
+						</button>
+					</div>
+
+					<div class="text-center fs-2 p-t-46 p-b-20">
+						<span class="txt2">
+							Veya Kayıt Olmak İçin Tıklayınız
+						</span>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<button type="button" class="btn btn-secondary col-7 btn-lg mx-auto">Kayıt Ol</button>
+					</div>
+
+					
+				}
+
+				<div class="login100-more" style="background-image: url('/LoginTemp/images/Logo.png'); background-size:contain; ">
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!--===============================================================================================-->
+	<script src="~/LoginTemp/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="~/LoginTemp/vendor/animsition/js/animsition.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="~/LoginTemp/vendor/bootstrap/js/popper.js"></script>
+	<script src="~/LoginTemp/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="~/LoginTemp/vendor/select2/select2.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="~/LoginTemp/vendor/daterangepicker/moment.min.js"></script>
+	<script src="~/LoginTemp/vendor/daterangepicker/daterangepicker.js"></script>
+	<!--===============================================================================================-->
+	<script src="~/LoginTemp/vendor/countdowntime/countdowntime.js"></script>
+	<!--===============================================================================================-->
+	<script src="~/LoginTemp/js/main.js"></script>
+
+</body>
+</html>
+
+@RenderBody()
+
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "appointment-form", id = "appointment-form" }))
+{
+	<h2> Staj Takip Sistemi Kayıt Formu</h2>
+	<div class="form-group-1">
+		@Html.TextBoxFor(x => x.AdSoyad, new { placeholder = "Ad Soyad",type="text", name="adsoyad" })
+		@Html.ValidationMessageFor(x => x.AdSoyad )
+
+		@Html.TextBoxFor(x => x.TCNO, new { placeholder = "TC Kimlik No",type="text", name="tcno" })
+		@Html.ValidationMessageFor(x => x.TCNO )
+
+		@Html.TextBoxFor(x => x.Mail, new { placeholder = "E-Mail",type="email", name="mail" })
+		@Html.ValidationMessageFor(x => x.Mail )
+
+		@Html.TextBoxFor(x => x.Password, new { placeholder = "Şifre" ,type="password", name="sifre" })
+		@Html.ValidationMessageFor(x => x.Password )
+
+		@Html.RadioButtonFor( x => x.Cinsiyet , true, new { id = "male-radio", @class = "form-check-input" }) <label for="male-radio">Erkek</label>
+		@Html.RadioButtonFor(x => x.Cinsiyet , false, new { id = "female-radio", @class = "form-check-input" }) <label for="female-radio">Kadın</label>
+		@Html.ValidationMessageFor(x => x.Cinsiyet )
+
+		@Html.EditorFor( x => x.Image, new { htmlAttributes = new { @class = "form-control", type = "file" } })
+		@Html.ValidationMessageFor(x => x.Image )
+
+		@Html.DropDownListFor(x => x.Unvan, new SelectList(new List<string> { "Prof. Dr.", "Doç. Dr.","Dr. Öğr. Üyesi","Öğretim Görevlisi","Araştırma Görevlisi" }), "Ünvan Seçiniz", new { @class = "form-control" })
+		@Html.ValidationMessageFor(x => x.Unvan )
+
+		@Html.TextBoxFor(x => x.OgrenciNo, new { placeholder = "Öğrenci No" ,type="text", name="ogrencino" })
+		@Html.ValidationMessageFor(x => x.OgrenciNo )
+
+		@Html.TextBoxFor(x => x.AdminNo, new { placeholder = "Admin No" ,type="text", name="adminno" })
+		@Html.ValidationMessageFor(x => x.AdminNo )
+
+		@Html.TextBoxFor(x => x.PersonelNo, new { placeholder = "Personel No" ,type="text", name="personelno" })
+		@Html.ValidationMessageFor(x => x.PersonelNo )
+
+		<div class="form-submit">
+			<input type="submit" name="submit" class="submit" value="Kayıt Ol" />
+		</div>
+	</div>
+}
+
